@@ -36,7 +36,7 @@ class TwoPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.arrow_back),
-        onPressed: () => Navigator.pushNamed(context, 'two_page'),
+        onPressed: () => Navigator.pushNamed(context, 'one_page'),
       ),
     );
   }
