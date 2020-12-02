@@ -1,4 +1,6 @@
+import 'package:app_state_management/src/bloc/person/person_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class OnePage extends StatelessWidget {
   const OnePage({Key key}) : super(key: key);
@@ -9,7 +11,17 @@ class OnePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Page One'),
       ),
-      body: InfoUserWidget(),
+      body: BlocBuilder<PersonCubit, PersonState>(
+        builder: (_, state) {
+          if (state is PersonInitial) {
+            return Center(
+              child: Text('No hay información del usuario'),
+            );
+          } else {
+            return InfoUserWidget();
+          }
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.accessibility),
         onPressed: () => Navigator.pushNamed(context, 'two_page'),
